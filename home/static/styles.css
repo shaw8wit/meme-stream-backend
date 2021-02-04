@@ -1,3 +1,4 @@
-h1 {
-    color: greenyellow;
+body {
+    background-color: rgba(255, 248, 220, 0.9);
+    min-height: 100vh;
 }

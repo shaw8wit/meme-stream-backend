@@ -7,11 +7,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'styles.css' %}" rel="stylesheet">
-    <title>xmeme</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <title>Xmeme</title>
 </head>
 
 <body>
-    <h1>Working</h1>
+
+    <div class="container is-max-desktop p-2 py-4">
+        <form onsubmit="return saveMeme();" class="card">
+            <header class="card-header p-3">
+                <p class="card-header-title">Fill Details:</p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <div class="field">
+                        <label class="label" for="username">Meme Owner</label>
+                        <div class="control">
+                            <input pattern="[a-zA-Z ]{2,}" type="text" name="username" id="username"
+                                class="has-text-centered input" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="caption">Caption</label>
+                        <div class="control">
+                            <input pattern="[a-zA-Z ]{2,}" type="text" name="caption" id="caption"
+                                class="has-text-centered input" placeholder="Enter Caption" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="url">Meme Url</label>
+                        <div class="control">
+                            <input type="url" name="url" id="url" class="has-text-centered input"
+                                placeholder="Enter Url" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="card-footer">
+                <button type="submit" class="button is-success card-footer-item">Submit Meme</button>
+                <button type="reset" class="button is-warning card-footer-item">Reset</button>
+            </footer>
+        </form>
+    </div>
 
     <script src="{% static 'script.js' %}"></script>
 </body>
