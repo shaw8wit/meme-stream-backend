@@ -21,24 +21,26 @@
             <div class="card-content">
                 <div class="content">
                     <div class="field">
-                        <label class="label" for="username">Meme Owner</label>
+                        <label class="label" for="name">Meme Owner</label>
                         <div class="control">
-                            <input pattern="[a-zA-Z ]{2,}" type="text" name="username" id="username"
-                                class="has-text-centered input" placeholder="Enter your full name" required>
+                            <input pattern="[a-zA-Z ]{2,}" type="text" name="name" id="name"
+                                class="has-text-centered input" placeholder="Enter your full name" autocomplete="off"
+                                required>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label" for="caption">Caption</label>
                         <div class="control">
                             <input pattern="[a-zA-Z ]{2,}" type="text" name="caption" id="caption"
-                                class="has-text-centered input" placeholder="Enter Caption" required>
+                                class="has-text-centered input" placeholder="Be creative with the caption"
+                                autocomplete="off" required>
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label" for="url">Meme Url</label>
+                        <label class="label" for="url">Meme URL</label>
                         <div class="control">
                             <input type="url" name="url" id="url" class="has-text-centered input"
-                                placeholder="Enter Url" required>
+                                placeholder="Enter URL of your meme here" autocomplete="off" required>
                         </div>
                     </div>
                 </div>

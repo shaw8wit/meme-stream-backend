@@ -7,5 +7,5 @@ def index(request):
     return render(request, 'index.html')
 
 
-def test(request):
+def memes(request):
     return render(request, 'index.html')

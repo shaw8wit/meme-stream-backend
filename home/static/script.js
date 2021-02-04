@@ -1,8 +1,10 @@
+const form = document.querySelector('form');
+const username = document.getElementById('name');
+const caption = document.getElementById('caption');
+const url = document.getElementById('url');
+
 function saveMeme() {
-    const username = document.getElementById('username').value;
-    const caption = document.getElementById('caption').value;
-    const url = document.getElementById('url').value;
-    document.querySelector('form').reset();
-    console.log(username, caption, url);
+    console.log(username.value, caption.value, url.value, "sdjskldjkl");
+    form.reset();
     return false;
 }
