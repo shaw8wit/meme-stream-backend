@@ -37,27 +37,11 @@ const saveMeme = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     let result = '';
-    [{
-        'name': "test one name",
-        'caption': "test one caption",
-        'url': "https://3c534w2w7sa3ma8ved14ax12-wpengine.netdna-ssl.com/wp-content/uploads/2020/07/Copy-of-Untitled-2020-07-08T105340.290-1080x630.png"
-    }, {
-        'name': "test two name",
-        'caption': "test two caption",
-        'url': "https://images.hindustantimes.com/rf/image_size_630x354/HT/p2/2020/10/26/Pictures/_1b8238d2-1749-11eb-8018-0bdbc3b69c17.jpg"
-    }, {
-        'name': "test three name",
-        'caption': "test three caption",
-        'url': "https://i.pinimg.com/736x/a2/3d/27/a23d2700baae88a347dbc6de49192eae.jpg"
-    }, {
-        'name': "test four name",
-        'caption': "test four captijfklsdjklfjklsdjfklsdjkfljsdklfjklsdjklfjsdklfjklsdjfklsdjklfjsdklfjklsdjfljlon",
-        'url': "https://cdn.vox-cdn.com/thumbor/cV8X8BZ-aGs8pv3D-sCMr5fQZyI=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/19933026/image.png"
-    }, {
-        'name': "test five name",
-        'caption': "test five caption",
-        'url': "https://cms.qz.com/wp-content/uploads/2018/07/meme-featured.jpg"
-    }].forEach(e => result = result.concat(getMemeHolder(e.name, e.caption, e.url)));
 
-    output.innerHTML = result;
+    fetch('/memes')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(e => result = result.concat(getMemeHolder(e.name, e.caption, e.url)));
+            output.innerHTML = result;
+        });
 });
