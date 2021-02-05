@@ -1,3 +1,3 @@
-# meme-stop
+# meme-stream-backend
 
-A place for memers to share and appreciate memes together.
+The back-end repo for the meme-stream project, a place for memers to share and appreciate memes together.
