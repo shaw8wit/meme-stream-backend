@@ -49,6 +49,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # exempting csrf for the whole website
+    'home.middleware.disable.DisableCSRF'
 ]
 
 ROOT_URLCONF = 'xmeme.urls'
