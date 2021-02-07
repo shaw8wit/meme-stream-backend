@@ -50,7 +50,7 @@ const getMemes = () => {
 
 const saveMeme = () => {
 
-    fetch('memes/', {
+    fetch('/memes', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -74,13 +74,3 @@ const saveMeme = () => {
 
 
 document.addEventListener("DOMContentLoaded", getMemes);
-
-
-
-// curl --location --request POST 'http://127.0.0.1:8000/memes' \
-// --header 'Content-Type: application/json' \
-// --data-raw '{
-// "name": "ashok kumar",
-// "url": "https://images.pexels.com/photos/3573382/pexels-photo-3573382.jpeg",
-// "caption": "This is a meme"
-// }'
