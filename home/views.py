@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import Http404
 
-from .serializers import MemeSerializer
+from .serializers import MemeSerializer, MemesSerializer
 
 from rest_framework import status
 from rest_framework.response import Response
@@ -29,30 +29,43 @@ def home(request):
 def memes(request):
     try:
         if request.method == 'POST':
-            serializer = MemeSerializer(data=request.data)
+            serializer = MemesSerializer(data=request.data)
             if serializer.is_valid():
-                serializer.save()
-                return Response({'id': serializer.data['id']})
-            print(serializer.errors)
-            return Response({'error': 'some fields are missing!'})
-    except Exception as e:
-        print(e)
-    memes = Meme.objects.all()
-    serializer = MemeSerializer(memes, many=True)
-    return Response(serializer.data)
+                name = serializer.validated_data['name']
+                url = serializer.validated_data['url']
+                caption = serializer.validated_data['caption']
+                if '' not in [name, url, caption]:
+                    existingMeme = Meme.objects.filter(
+                        name=name, caption=caption, url=url)
+                    if not existingMeme:
+                        serializer.save()
+                        return Response({'id': f"{serializer.data['id']}"}, status=status.HTTP_201_CREATED)
+                    else:
+                        return Response(status=status.HTTP_409_CONFLICT)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        memes = Meme.objects.all()
+        serializer = MemesSerializer(memes, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 @api_view(['GET', 'PATCH'])
 def meme(request, id):
     try:
-        meme = Meme.objects.get(id=id)
-        if request.method == 'PATCH':
-            serializer = MemeSerializer(instance=meme, data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(status=status.HTTP_204_NO_CONTENT)
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-        serializer = MemeSerializer(meme, many=False)
-        return Response(serializer.data)
+        try:
+            meme = Meme.objects.get(id=id)
+            if request.method == 'PATCH':
+                serializer = MemeSerializer(instance=meme, data=request.data)
+                if serializer.is_valid():
+                    if 'name' in serializer.validated_data:
+                        serializer.validated_data['name'] = meme.name
+                    serializer.save()
+                    return Response(status=status.HTTP_204_NO_CONTENT)
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+            serializer = MemesSerializer(meme, many=False)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except:
+            return Response(status=status.HTTP_404_NOT_FOUND)
     except:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
