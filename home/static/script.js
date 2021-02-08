@@ -39,7 +39,7 @@ const checkImage = (url) => {
 
 const getMemes = () => {
     let result = '';
-    fetch('/memes')
+    fetch('memes')
         .then(response => response.json())
         .then(data => {
             data.forEach(e => result = result.concat(getMemeHolder(e.name, e.caption, e.url)));
@@ -50,7 +50,7 @@ const getMemes = () => {
 
 const saveMeme = () => {
 
-    fetch('/memes', {
+    fetch('memes/', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import Http404
 
 from .serializers import MemeSerializer, MemesSerializer
 
@@ -43,7 +42,7 @@ def memes(request):
                     else:
                         return Response(status=status.HTTP_409_CONFLICT)
             return Response(status=status.HTTP_400_BAD_REQUEST)
-        memes = Meme.objects.all()
+        memes = reversed(Meme.objects.all().order_by('-id')[:100])
         serializer = MemesSerializer(memes, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except:
