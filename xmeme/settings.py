@@ -124,7 +124,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# APPEND_SLASH = False
+APPEND_SLASH = False
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
