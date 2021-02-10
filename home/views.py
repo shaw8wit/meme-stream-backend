@@ -1,5 +1,4 @@
 from django.shortcuts import render
-import markdown
 
 from .serializers import MemeSerializer, MemesSerializer
 
@@ -10,17 +9,13 @@ from rest_framework.decorators import api_view
 from .models import Meme
 
 
-def index(request):
-    return render(request, 'index.html')
-
-
 @api_view(['GET'])
 def home(request):
     api_urls = {
-        'Get all Memes': '/memes/',
-        'Get details of a Meme': '/memes/<int:id>/',
-        'Create a new Meme': '/memes/',
-        'Update an existing Meme': '/memes/<int:id>/',
+        'Get all Memes': '/memes',
+        'Get details of a Meme': '/memes/<int:id>',
+        'Create a new Meme': '/memes',
+        'Update an existing Meme': '/memes/<int:id>',
     }
     return Response(api_urls)
 
