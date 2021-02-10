@@ -31,14 +31,15 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'xmeme-shaw8wit.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'home',
-    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework_swagger',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -133,5 +134,5 @@ STATIC_URL = '/static/'
 APPEND_SLASH = False
 
 REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }

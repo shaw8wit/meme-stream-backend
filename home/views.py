@@ -1,3 +1,5 @@
+import coreapi
+
 from django.shortcuts import render
 
 from .serializers import MemeSerializer, MemesSerializer
@@ -5,8 +7,26 @@ from .serializers import MemeSerializer, MemesSerializer
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.schemas import AutoSchema
 
 from .models import Meme
+
+
+class MemesSchema(AutoSchema):
+
+    def get_manual_fields(self, path, method):
+        extra_fields = []
+        if method.lower() in ['post', 'patch']:
+            extra_fields = [
+                coreapi.Field('name'),
+                coreapi.Field('caption'),
+                coreapi.Field('url')
+            ]
+        manual_fields = super().get_manual_fields(path, method)
+        return manual_fields + extra_fields
+
+
+schema = MemesSchema()
 
 
 @api_view(['GET'])
