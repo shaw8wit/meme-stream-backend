@@ -11,7 +11,6 @@ from .models import Meme
 
 
 def index(request):
-    print('Markdown version:', markdown.version)
     return render(request, 'index.html')
 
 
