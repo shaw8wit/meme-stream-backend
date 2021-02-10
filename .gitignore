@@ -1,9 +1,6 @@
 # Django #
 *.log
 *.pot
-*.pyc
-__pycache__
-db.sqlite3
 media
 
 # Backup files # 
@@ -23,10 +20,6 @@ media
 .idea/**/gradle.xml 
 .idea/**/libraries 
 *.iws /out/ 
-
-# Python # 
-*.py[cod] 
-*$py.class 
 
 # Distribution / packaging 
 .Python build/ 
@@ -114,5 +107,3 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
-
-migrations
