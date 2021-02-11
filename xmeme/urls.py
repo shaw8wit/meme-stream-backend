@@ -15,12 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_swagger.views import get_swagger_view
-
-schema_view = get_swagger_view(title='Swagger UI for Xmeme')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls')),
-    path('swagger-ui', schema_view)
+    path('', include('home.urls'))
 ]
