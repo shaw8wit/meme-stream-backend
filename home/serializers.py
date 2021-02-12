@@ -3,7 +3,10 @@ from .models import Meme
 
 
 class MemeSerializer(serializers.ModelSerializer):
-
+    """
+    Serializer where the fields are optional.
+    Used in PATCH request.
+    """
     class Meta:
         model = Meme
         fields = '__all__'
@@ -13,7 +16,10 @@ class MemeSerializer(serializers.ModelSerializer):
 
 
 class MemesSerializer(serializers.ModelSerializer):
-
+    """
+    Serializer where the fields are required.
+    Used in POST request.
+    """
     class Meta:
         model = Meme
         fields = '__all__'

@@ -1,36 +1,17 @@
-import coreapi
-
-from django.shortcuts import render
-
 from .serializers import MemeSerializer, MemesSerializer
 
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from rest_framework.schemas import AutoSchema
 
 from .models import Meme
 
 
-class MemesSchema(AutoSchema):
-
-    def get_manual_fields(self, path, method):
-        extra_fields = []
-        if method.lower() in ['post', 'patch']:
-            extra_fields = [
-                coreapi.Field('name'),
-                coreapi.Field('caption'),
-                coreapi.Field('url')
-            ]
-        manual_fields = super().get_manual_fields(path, method)
-        return manual_fields + extra_fields
-
-
-schema = MemesSchema()
-
-
 @api_view(['GET'])
 def home(request):
+    """
+    The default route allowing only get request
+    """
     api_urls = {
         'Get all Memes': '/memes',
         'Get details of a Meme': '/memes/<int:id>',
@@ -42,6 +23,13 @@ def home(request):
 
 @api_view(['GET', 'POST'])
 def memes(request):
+    """
+    The /memes route allowing GET and POST request.
+
+    GET returns all the memes in the database.
+
+    POST a request to add memes to database.
+    """
     try:
         if request.method == 'POST':
             serializer = MemesSerializer(data=request.data)
@@ -67,6 +55,13 @@ def memes(request):
 
 @api_view(['GET', 'PATCH'])
 def meme(request, id):
+    """
+    The /memes/{id} route allowing GET and PATCH request.
+
+    GET returns details of the meme with the given id.
+
+    PATCH edits the caption and url of the meme with the given id.
+    """
     try:
         try:
             meme = Meme.objects.get(id=id)

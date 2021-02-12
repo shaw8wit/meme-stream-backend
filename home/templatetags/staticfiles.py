@@ -9,6 +9,9 @@ def static(path):
     return _static(path)
 
 
+# template tag for staticfiles tag to static tag converter
+# to make swagger compatible with current django version
+
 @register.tag('static')
 def do_static(parser, token):
     return _do_static(parser, token)
