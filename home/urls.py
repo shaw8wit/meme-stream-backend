@@ -13,7 +13,7 @@ urlpatterns = [
     path('', views.home, name='home'),
 
     # route for the swagger ui
-    path('swagger-ui', schema_view),
+    path('swagger-ui/', schema_view),
 
     # ? api endpoints
     path('memes', views.memes, name='memes'),
