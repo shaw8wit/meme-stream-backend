@@ -1,5 +1,10 @@
 # meme-stream-backend
 
+![Github Followers](https://img.shields.io/github/followers/shaw8wit?label=Follow&color=78909c)&nbsp;
+![GitHub stars](https://img.shields.io/github/stars/shaw8wit/meme-stream-backend?color=78909c)&nbsp;
+![GitHub forks](https://img.shields.io/github/forks/shaw8wit/meme-stream-backend?color=78909c)&nbsp;
+![GitHub watchers](https://img.shields.io/github/watchers/shaw8wit/meme-stream-backend?color=78909c)
+
 The back-end repo for the meme-stream project, a place for memers to share and appreciate memes together.
 
 + <details>
